@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% extends "template.html" %}
+    {% block head %}
+        {{ super() }}
+    {% endblock %}
+</head>
+<body>
+    {% block content %}
+        <div class="container">
+            <h4>Opps! The page requested was not found!</h4>
+            <p>{{ error }}</p>
+            <p class="mt-5">Back to <a href="{{ url_for("index") }}">main page</a></p>
+        </div>
+
+    {% endblock %}
+</body>
+</html>

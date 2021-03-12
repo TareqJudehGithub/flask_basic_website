@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+<head>
+   {% extends "template.html" %}
+    {% block head %}
+        {{ super() }}
+
+    {% endblock %}
+</head>
+<body>
+    {% block content %}
+        <div class="section-container">
+            {% if name %}
+
+                <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    <p style="font-size: 17px">
+                        Thank you, {{ name | title }}!
+
+                    </p>
+                </div>
+
+            {% else %}
+                <div class="container">
+                <h1>Friends List - HTML forms</h1>
+
+                <div class="row">
+                    <form action="/friends_html" method="POST" class="reveal-content">
+                        <div class="mb-3">
+                            <input
+                                    type="text"
+                                    class="form-control"id="name"
+                                    placeholder="First Name"
+                                    aria-describedby="emailHelp"
+                                    name="first_name"
+                                    required
+                                    autofocus
+                            >
+                        </div>
+
+                        <div class="mb-3">
+                            <button type="submit" class="btn btn-secondary mt-3 ">Submit</button>
+                        </div>
+                    </form>
+                </div>
+            {% endif %}
+                <ul>
+                    <p>Friends List</p>
+                    {% for friend in friends_list %}
+                        <li class="container">
+                            <div class="row" style="width: 350px">
+                                <div class="col-6"> {{ friend.name | title }}</div>
+                                <div class="col-6">
+                                    <a
+                                        class="btn btn-outline-secondary btn-sm"
+                                        href="/update_friends/{{ friend.id }}">
+                                    Edit
+                                    </a>
+                                </div>
+                            </div>
+                        </li>
+                    {% endfor %}
+                </ul>
+                </div>
+    </div>
+    {{ first_name }}
+    {% endblock %}
+
+</body>
+</html>

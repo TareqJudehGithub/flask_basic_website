@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% extends "template.html" %}
+    {% block head %}
+        {{ super() }}
+    {% endblock %}
+</head>
+<body>
+    {% block content %}
+        <div class="container">
+        <h1>Error!</h1>
+        <p>{{ error_statement }}</p>
+        </div>
+
+    {% endblock %}
+
+</body>
+</html>

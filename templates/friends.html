@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+<head>
+   {% extends "template.html" %}
+    {% block head %}
+        {{ super() }}
+
+    {% endblock %}
+</head>
+<body>
+    {% block content %}
+        <div class="section-container">
+            {% if name %}
+
+                <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    <p style="font-size: 17px">
+                        Thank you, {{ name | title }}!
+
+                    </p>
+                </div>
+
+            {% else %}
+                <div class="container">
+                <h1>Flask Form</h1>
+
+                <div class="row">
+                    <form  method="POST" class="reveal-content">
+                        {{ friends_form.hidden_tag() }}
+
+                        <div class="mb-3">
+                            {{ friends_form.first_name(class="form-control", placeholder="First Name") }}
+                        </div>
+
+                        <div class="mb-3">
+                            {{ friends_form.submit(class="btn btn-secondary") }}
+                        </div>
+                    </form>
+                </div>
+            {% endif %}
+
+                </div>
+            <ul>
+                {% for friend in friends_list %}
+                    <li>{{ friend.name | title }}</li>
+                {% endfor %}
+            </ul>
+    </div>
+
+    {% endblock %}
+
+</body>
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   {% extends "template.html" %}
+    {% block head %}
+        {{ super() }}
+    {% endblock %}
+</head>
+<body>
+    {% block content %}
+        <div class="section-container">
+            {% if first_name %}
+
+                <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                      <p style="font-size: 17px">
+                        Thank you, {{ first_name | title }}!
+
+                    </p>
+                </div>
+
+            {% else %}
+                <div class="container">
+                    <h1>Flask-WTForm</h1>
+
+                        <div class="row">
+                            <form  method="POST" class="reveal-content">
+                                {{ news_letter.hidden_tag() }}
+
+                                <div class="mb-3">
+                                     {{ news_letter.first_name(class="form-control", placeholder="First Name") }}
+                                </div>
+
+                                <div class="mb-3">
+                                    {{ news_letter.last_name(class="form-control", placeholder="Last Name") }}
+                                </div>
+                                <div class="mb-3">
+                                    {{ news_letter.email(class="form-control", placeholder="example@email.com") }}
+                                </div>
+                                <div class="mb-3">
+                                        {{ news_letter.submit(class="btn btn-secondary") }}
+                                </div>
+                            </form>
+                        </div>
+                </div>
+            {% endif %}
+        </div>
+
+    {% endblock %}
+</body>
+</html>

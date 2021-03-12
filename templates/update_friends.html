@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+<head>
+   {% extends "template.html" %}
+    {% block head %}
+        {{ super() }}
+    {% endblock %}
+</head>
+<body>
+    {% block content %}
+        <div    style="width: 100%"
+                class="alert alert-warning alert-dismissible fade show" role="alert">
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            <p style="font-size: 17px;">
+                Updated, {{ friend_to_update.name | title }}!
+            </p>
+        </div>
+        <div class="container">
+
+            <h1>{{ friend_to_update.name | title }}</h1>
+            <div class="row">
+                <form action="/update_friends/{{ friend_id }}" method="post" class="reveal-content">
+                    <div class="mb-3">
+                        <input
+                                type="text"
+                                name="first_name"
+                                class="form-control"
+                                value="{{ friend_to_update.name | title}}"
+                                required
+                        >
+                    </div>
+
+                    <div class="mb-3">
+                        <button type="submit" class="btn btn-secondary mt-3 ">Submit</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    {% endblock %}
+
+</body>
+</html>

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% extends "template.html" %}
+    {% block head %}
+        {{ super() }}
+    {% endblock %}
+</head>
+<body>
+    {% block content %}
+        <h1>Form Page</h1>
+        <p>Thank you, {{ first_name  | title}}! <br>I will contact you shortly.</p>
+        <br>
+{#        <h2>Subscribers list:</h2>#}
+{#        <ul style="list-style: none">#}
+{#            {% for item in subscribers %}#}
+{#                <li>{{ item | title }} </li>#}
+{#            {% endfor %}#}
+{#        </ul>#}
+    {% endblock %}
+
+</body>
+</html>

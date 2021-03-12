@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head>
+    {% extends "template.html" %}
+    {% block head %}
+        {{ super() }}
+    {% endblock %}
+</head>
+<body>
+    {% block content %}
+        <div class="container">
+            <h1>My Newsletter</h1>
+            <p>{{ title }}</p>
+        </div>
+
+        <form action="/old-form" method="POST">
+            <div class="mb-3">
+                <input
+                        type="text"
+                        class="form-control"id="name"
+                        placeholder="First Name"
+                        aria-describedby="emailHelp"
+                        name="first_name"
+                >
+            </div>
+             <div class="mb-3">
+                <input
+                        type="text"
+                        class="form-control"id="name"
+                        placeholder="Last Name"
+                        aria-describedby="emailHelp"
+                        name="last_name"
+                >
+            </div>
+
+            <div class="mb-3">
+                <input
+                        type="email"
+                        class="form-control"
+                        id="email"
+                        placeholder="example@email.com"
+                        aria-describedby="emailHelp"
+                        name="email"
+                >
+            </div>
+            <button type="submit" class="btn btn-secondary mt-3 ">Submit</button>
+        </form>
+
+    {% endblock %}
+
+</body>
+</html>
