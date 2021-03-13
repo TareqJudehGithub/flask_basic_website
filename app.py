@@ -227,6 +227,7 @@ def friends_html():
         )
 
 
+# Update records - HTML forms:
 @app.route("/update_friends/<int:friend_id>", methods=["GET", "POST"])
 def update_friends(friend_id):
 
@@ -250,6 +251,19 @@ def update_friends(friend_id):
                 friend_id=friend_id,
                 year=year
             )
+
+
+# Delete records - HTML forms:
+@app.route("/delete_friends/<int:friend_id>", methods=["GET", "POST"])
+def delete_friends(friend_id):
+    friend_to_delete = Friends.query.get_or_404(friend_id)
+    try:
+        db.session.delete(friend_to_delete)
+        db.session.commit()
+        return redirect("/friends_html")
+
+    except:
+        return "Error deleting record."
 
 
 # Not found route:
